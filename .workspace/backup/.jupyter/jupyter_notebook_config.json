@@ -1,0 +1,10 @@
+{
+    "NotebookApp": {
+        "nbserver_extensions": {
+            "jupyter_tensorboard": true,
+            "jupyterlab_git": true,
+            "jupyterlab_code_formatter": true,
+            "jupyter_tooling.tooling_handler": true
+        }
+    }
+}
