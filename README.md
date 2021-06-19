@@ -7,7 +7,7 @@
 ***
 ***
 *** To avoid retyping too much info. Do a search and replace for the following:
-*** github_username, repo_name, twitter_handle, email, project_title, project_description
+*** wilsongis, 3DP-experiments, twitter_handle, email, project_title, project_description
 -->
 
 
@@ -89,7 +89,7 @@
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
+`wilsongis`, `3DP-experiments`, `twitter_handle`, `email`, `project_title`, `project_description`
 
 
 ### Built With
@@ -165,7 +165,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+Your Name - [@wilsongis](https://twitter.com/wilsongis) - email
 
 Project Link: [https://github.com/wilsongis/3DP_Experiments](https://github.com/wilsongis/3DP_Experiments)
 
@@ -184,16 +184,16 @@ Project Link: [https://github.com/wilsongis/3DP_Experiments](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/wilsongis/repo.svg?style=for-the-badge
 [contributors-url]: https://github.com/wilsongis/3DP_Experiments/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/wilsongis/repo.svg?style=for-the-badge
 [forks-url]: https://github.com/wilsongis/3DP_Experiments/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/wilsongis/repo.svg?style=for-the-badge
 [stars-url]: https://github.com/wilsongis/3DP_Experiments/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/wilsongis/repo.svg?style=for-the-badge
 [issues-url]: https://github.com/wilsongis/3DP_Experiments/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/wilsongis/repo.svg?style=for-the-badge
 [license-url]: https://github.com/wilsongis/3DP_Experiments/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/github_username
+[linkedin-url]: https://linkedin.com/in/wilsongis
 [product-screenshot]: images/3DP-workspace.png
