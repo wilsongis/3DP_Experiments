@@ -67,6 +67,7 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#updating">Updating</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -128,8 +129,18 @@ Install Docker
     --restart always \
     mltooling/ml-workspace:0.12.1
    ```
+4. Install Python Packages
+    ```sh
+    pip install -U pip setuptools wheel
+    pip install -r requirements.txt
+    ```
+### Updating
 
-
+    ```sh
+    # If you have a `requirements.txt` file, you should install those requirements
+    pip install -U pip setuptools wheel
+    pip install -r requirements.txt
+    ```
 
 <!-- USAGE EXAMPLES -->
 ## Usage
