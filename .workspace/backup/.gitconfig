@@ -17,3 +17,6 @@
 	sslVerify = false
 [credential]
 	helper = cache --timeout=31540000
+[user]
+	email = wilsongis@gmail.com
+	name = wilsongis

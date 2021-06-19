@@ -36,16 +36,14 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">project_title</h3>
+  <h3 align="center">3DP Experiments</h3>
 
   <p align="center">
-    project_description
+    A ML WSorkspace to allow me to isolate and reproduce my dissertation experiments.
     <br />
     <a href="https://github.com/wilsongis/3DP_Experiments"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/wilsongis/3DP_Experiments">View Demo</a>
-    ·
     <a href="https://github.com/wilsongis/3DP_Experiments/issues">Report Bug</a>
     ·
     <a href="https://github.com/wilsongis/3DP_Experiments/issues">Request Feature</a>
@@ -87,31 +85,27 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`wilsongis`, `3DP-experiments`, `twitter_handle`, `email`, `project_title`, `project_description`
+This is a workspace for my dissertation experiments
 
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [Machine Learning Workspaces](https://github.com/ml-tooling/ml-workspace#getting-started)
+* [Docker for Data Science – A Step by Step Guide](https://dagshub.com/blog/setting-up-data-science-workspace-with-docker/)
+* [dexpy](https://statease.github.io/dexpy/)
+
 
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Install Docker
+
+* See [Install Docker Engine](https://docs.docker.com/engine/install/)
 
 ### Installation
 
@@ -119,9 +113,20 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    git clone https://github.com/wilsongis/3DP_Experiments.git
    ```
-2. Install NPM packages
+2. Enter workspace folder
    ```sh
-   npm install
+   cd 3DP-Experiments
+   ```
+3. Create [ML Workspace](https://github.com/ml-tooling/ml-workspace#getting-started)
+   ```sh
+   docker run -d \
+    -p 8080:8080 \
+    --name "3DP-workspace" \
+    -v "${PWD}:/workspace" \
+    --env AUTHENTICATE_VIA_JUPYTER="mytoken" \
+    --shm-size 512m \
+    --restart always \
+    mltooling/ml-workspace:0.12.1
    ```
 
 
