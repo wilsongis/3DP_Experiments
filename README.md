@@ -136,8 +136,8 @@ Install Docker
     ```
 ### Updating
 
-# This will override your existing `requirements.txt`. 
-# If you want to append, use `>>` instead of `>`
+This will override your existing `requirements.txt`. 
+If you want to append, use `>>` instead of `>`
 ```sh
 pip list --format=freeze > requirements.txt
 ```
