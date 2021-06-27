@@ -136,11 +136,12 @@ Install Docker
     ```
 ### Updating
 
-    ```sh
-    # If you have a `requirements.txt` file, you should install those requirements
-    pip install -U pip setuptools wheel
-    pip install -r requirements.txt
-    ```
+# This will override your existing `requirements.txt`. 
+# If you want to append, use `>>` instead of `>`
+```sh
+pip list --format=freeze > requirements.txt
+```
+
 
 <!-- USAGE EXAMPLES -->
 ## Usage
