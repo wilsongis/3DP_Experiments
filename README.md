@@ -135,6 +135,7 @@ Install Docker
     pip install -r requirements.txt
     conda install -c conda-forge pyomo
     conda install -c conda-forge ipopt glpk
+    conda install -c r r-irkernel
     ```
 ### Updating
 
