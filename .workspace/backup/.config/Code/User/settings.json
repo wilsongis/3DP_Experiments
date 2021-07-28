@@ -30,5 +30,11 @@
   ],
   "python.testing.pytestEnabled": true,
   "workbench.colorTheme": "Default Dark+",
-  "python.pythonPath": "/opt/conda/bin/python"
+  "python.pythonPath": "/opt/conda/bin/python",
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ]
 }
