@@ -1,0 +1,3780 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 Courier-Bold;
+\f3\fmodern\fcharset0 Courier;\f4\fmodern\fcharset0 Courier-Oblique;\f5\fnil\fcharset0 HelveticaNeue;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red17\green17\blue17;\red51\green51\blue51;
+\red0\green128\blue128;\red221\green17\blue68;\red153\green153\blue136;\red153\green0\blue0;\red0\green134\blue179;
+\red68\green85\blue136;\red153\green0\blue115;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c0;\csgenericrgb\c6667\c6667\c6667;\csgenericrgb\c20000\c20000\c20000;
+\csgenericrgb\c0\c50196\c50196;\csgenericrgb\c86667\c6667\c26667;\csgenericrgb\c60000\c60000\c53333;\csgenericrgb\c60000\c0\c0;\csgenericrgb\c0\c52549\c70196;
+\csgenericrgb\c26667\c33333\c53333;\csgenericrgb\c60000\c0\c45098;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b\fs65\fsmilli32800 \cf2 CR6 Results Analysis A
+\f1\b0\fs24 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb550\pardirnatural\partightenfactor0
+
+\f0\b\fs52\fsmilli26400 \cf3 Python Imports
+\f1\b0\fs24 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb360\pardirnatural\partightenfactor0
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+import
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ numpy 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+as
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ np\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+import
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ pandas 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+as
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ pd\
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+from
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ prettypandas 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+import
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ PrettyPandas\
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+import
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ patsy\
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+import
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ matplotlib.pyplot 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+as
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ plt\
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+import
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ seaborn 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+as
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ sns\
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+import
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ statsmodels.api 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+as
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ sm\
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+import
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ statsmodels.formula.api\
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+from
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ pyomo.environ 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+import
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ *\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb368\pardirnatural\partightenfactor0
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+from
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ sklearn.linear_model 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+import
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ LinearRegression\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+from
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ sklearn.preprocessing 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+import
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ PolynomialFeatures\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb368\pardirnatural\partightenfactor0
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+from
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ IPython.display 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+import
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ display, Markdown, HTML\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb368\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+%matplotlib inline\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+PlotWidth = \cf5 \kerning1\expnd0\expndtw-1
+6\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb368\pardirnatural\partightenfactor0
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+import
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ warnings\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+warnings.filterwarnings(\cf6 \kerning1\expnd0\expndtw0
+'ignore'\cf4 \kerning1\expnd0\expndtw-1
+)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb424\pardirnatural\partightenfactor0
+
+\f4\i \cf7 \kerning1\expnd0\expndtw0
+# helper functions for this notebook\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb368\pardirnatural\partightenfactor0
+\cf7 \kerning1\expnd0\expndtw0
+# use SVG for matplotlib-based figures\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+
+\f3\i0 \cf4 \kerning1\expnd0\expndtw0
+%matplotlib inline\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+%config InlineBackend.figure_format = \cf6 \kerning1\expnd0\expndtw0
+'svg'\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb368\pardirnatural\partightenfactor0
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+def
+\f3\b0 \cf4 \kerning1\expnd0\expndtw-1
+ 
+\f2\b \cf8 \kerning1\expnd0\expndtw0
+coded_to_actual
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+(coded_data, actual_lows, actual_highs)\cf4 \kerning1\expnd0\expndtw-1
+:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+    \cf6 \kerning1\expnd0\expndtw0
+"""Converts a pandas DataFrame from coded units to actuals."""\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+    actual_data = coded_data.copy()\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+    
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+for
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ col 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+in
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ actual_data.columns:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+       \
+           \
+       \
+           \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+if
+\f3\b0 \cf4 \kerning1\expnd0\expndtw-1
+ 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+not
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ (col 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+in
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ actual_highs 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+and
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ col 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+in
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ actual_lows):\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+continue\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+try
+\f3\b0 \cf4 \kerning1\expnd0\expndtw-1
+:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+
+\f4\i \cf7 \kerning1\expnd0\expndtw0
+# convert continuous variables to their actual value\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+
+\f3\i0 \cf4 \kerning1\expnd0\expndtw0
+            actual_data[col] *= \cf5 \kerning1\expnd0\expndtw0
+0.5\cf4 \kerning1\expnd0\expndtw0
+ * (float(actual_highs[col]) - float(actual_lows[co\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+l]))\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+            
+\f4\i \cf7 \kerning1\expnd0\expndtw0
+# don't need to cast to float here, if either are not a float exception wi\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf7 \kerning1\expnd0\expndtw0
+ll have been thrown\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+
+\f3\i0 \cf4 \kerning1\expnd0\expndtw0
+            actual_data[col] += \cf5 \kerning1\expnd0\expndtw0
+0.5\cf4 \kerning1\expnd0\expndtw0
+ * (actual_highs[col] + actual_lows[col])\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+       \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4            \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+except
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ ValueError:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+
+\f4\i \cf7 \kerning1\expnd0\expndtw0
+# assume 2 level categorical\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f3\i0 \cf4 \kerning1\expnd0\expndtw0
+            actual_data[col] = actual_data[col].map(\{\cf5 \kerning1\expnd0\expndtw0
+-1\cf4 \kerning1\expnd0\expndtw0
+: actual_lows[col], \cf5 \kerning1\expnd0\expndtw-1
+1\cf4 \kerning1\expnd0\expndtw0
+: actual_h\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb64\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+ighs[col]\})\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+    
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+return
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ actual_data\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+        \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+def
+\f3\b0 \cf4 \kerning1\expnd0\expndtw-1
+ 
+\f2\b \cf8 \kerning1\expnd0\expndtw0
+get_tick_labels
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+(key, lows, highs, units)\cf4 \kerning1\expnd0\expndtw-1
+:\
+\cf4 \kerning1\expnd0\expndtw0
+    \cf6 \kerning1\expnd0\expndtw0
+"""Returns a list of low/high labels with units (e.g. [8mm, 10mm])"""\
+\cf4 \kerning1\expnd0\expndtw0
+    
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+return
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ [str(lows[key]) + units[key], str(highs[key]) + units[key]]\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb368\pardirnatural\partightenfactor0
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+def
+\f3\b0 \cf4 \kerning1\expnd0\expndtw-1
+ 
+\f2\b \cf8 \kerning1\expnd0\expndtw0
+backward_regression
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+(X, y,\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+                           threshold_out,\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+                           verbose=True)\cf4 \kerning1\expnd0\expndtw-1
+:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+    included=list(X.columns)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+    
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+while
+\f3\b0 \cf4 \kerning1\expnd0\expndtw-1
+ 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+True
+\f3\b0 \cf4 \kerning1\expnd0\expndtw-1
+:\
+\cf4 \kerning1\expnd0\expndtw0
+        changed=
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+False\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+        model = sm.OLS(y, sm.add_constant(pd.DataFrame(X[included]))).fit()\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+        
+\f4\i \cf7 \kerning1\expnd0\expndtw0
+# use all coefs except intercept\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+
+\f3\i0 \cf4 \kerning1\expnd0\expndtw0
+        pvalues = model.pvalues.iloc[\cf5 \kerning1\expnd0\expndtw-1
+1\cf4 \kerning1\expnd0\expndtw0
+:]\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+        worst_pval = pvalues.max() 
+\f4\i \cf7 \kerning1\expnd0\expndtw0
+# null if pvalues is empty\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+
+\f3\i0 \cf4 \kerning1\expnd0\expndtw0
+        
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+if
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ worst_pval > threshold_out:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+            changed=
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+True\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+            worst_feature = pvalues.idxmax()\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+            included.remove(worst_feature)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+            
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+if
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ verbose:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+                print(\cf6 \kerning1\expnd0\expndtw0
+'Drop \{:30\} with p-value \{:.6\}'\cf4 \kerning1\expnd0\expndtw0
+.format(worst_feature, worst_pval\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+))\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+        
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+if
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+           \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+        \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+not
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ changed:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+break\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb368\pardirnatural\partightenfactor0
+
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+    
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+return
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ included\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb368\pardirnatural\partightenfactor0
+
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+def
+\f3\b0 \cf4 \kerning1\expnd0\expndtw-1
+ 
+\f2\b \cf8 \kerning1\expnd0\expndtw0
+build_model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+(X,values,verbose=True)\cf4 \kerning1\expnd0\expndtw-1
+:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+    X = [sub.replace(\cf6 \kerning1\expnd0\expndtw0
+'alh'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'model.X1'\cf4 \kerning1\expnd0\expndtw0
+) 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+for
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ sub 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+in
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ X]\
+\cf4 \kerning1\expnd0\expndtw0
+    X = [sub.replace(\cf6 \kerning1\expnd0\expndtw0
+'aps'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'model.X2'\cf4 \kerning1\expnd0\expndtw0
+) 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+for
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ sub 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+in
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ X]\
+\cf4 \kerning1\expnd0\expndtw0
+    X = [sub.replace(\cf6 \kerning1\expnd0\expndtw0
+'aid'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'model.X3'\cf4 \kerning1\expnd0\expndtw0
+) 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+for
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ sub 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+in
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ X]\
+\cf4 \kerning1\expnd0\expndtw0
+    X = [sub.replace(\cf6 \kerning1\expnd0\expndtw0
+'arw'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'model.X4'\cf4 \kerning1\expnd0\expndtw0
+) 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+for
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ sub 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+in
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ X]\
+\cf4 \kerning1\expnd0\expndtw0
+    X = [sub.replace(\cf6 \kerning1\expnd0\expndtw0
+'awt'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'model.X5'\cf4 \kerning1\expnd0\expndtw0
+) 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+for
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ sub 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+in
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ X]\
+\cf4 \kerning1\expnd0\expndtw0
+    X = [sub.replace(\cf6 \kerning1\expnd0\expndtw0
+':'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'*'\cf4 \kerning1\expnd0\expndtw0
+) 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+for
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ sub 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+in
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ X]\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+    model = str(values[\cf5 \kerning1\expnd0\expndtw-1
+0\cf4 \kerning1\expnd0\expndtw0
+])\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+    i=\cf5 \kerning1\expnd0\expndtw-1
+1\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+    
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+for
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ v 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+in
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ X:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+        model  += \cf6 \kerning1\expnd0\expndtw0
+" + "\cf4 \kerning1\expnd0\expndtw0
+ + str(values[i]) + \cf6 \kerning1\expnd0\expndtw0
+" * "\cf4 \kerning1\expnd0\expndtw0
+ + v\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+        i += \cf5 \kerning1\expnd0\expndtw-1
+1\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+    
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+if
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ verbose:\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+        print(model)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb80\pardirnatural\partightenfactor0
+\cf4 \kerning1\expnd0\expndtw0
+    
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+return
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ model\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sb714\pardirnatural\partightenfactor0
+
+\f0\b\fs52\fsmilli26400 \cf3 \kerning1\expnd0\expndtw0 Process CSV Files
+\f1\b0\fs24 \cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+# importing the pandas library
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+import
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ pandas 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+as
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ pd
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+# reading the csv file using read_csv
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+# storing the data frame in variable called df
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+df_cost = pd.read_csv(\cf6 \kerning1\expnd0\expndtw0
+'https://raw.githubusercontent.com/wilsongis/3DP_Experiments/mai
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf6 \kerning1\expnd0\expndtw0
+n/Data/cr6_cost_raw.txt'\cf4 \kerning1\expnd0\expndtw0
+, sep=\cf6 \kerning1\expnd0\expndtw0
+'\\t'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+df_time = pd.read_csv(\cf6 \kerning1\expnd0\expndtw0
+'https://raw.githubusercontent.com/wilsongis/3DP_Experiments/mai
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf6 \kerning1\expnd0\expndtw0
+n/Data/cr6_time_raw.txt'\cf4 \kerning1\expnd0\expndtw0
+, sep=\cf6 \kerning1\expnd0\expndtw0
+'\\t'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+# creating a list of column names by
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+# calling the .columns
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+list_of_columns_cost = list(df_cost.columns)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+list_of_columns_time = list(df_time.columns)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+# displaying the list of column names
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(\cf6 \kerning1\expnd0\expndtw0
+'List of Cost column names : '\cf4 \kerning1\expnd0\expndtw0
+, 
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+      list_of_columns_cost)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(\cf6 \kerning1\expnd0\expndtw0
+'List of Time column names : '\cf4 \kerning1\expnd0\expndtw0
+, 
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+      list_of_columns_time)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf9 \kerning1\expnd0\expndtw0
+List\cf4 \kerning1\expnd0\expndtw0
+ of Cost column names :  [\cf6 \kerning1\expnd0\expndtw0
+'trial'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'lh'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'ps'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'id'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'rw'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'wt'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'alh'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'aps'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'ai
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf6 \kerning1\expnd0\expndtw0
+d'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'arw'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'awt'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'rep'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'cost'\cf4 \kerning1\expnd0\expndtw0
+]  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf9 \kerning1\expnd0\expndtw0
+List\cf4 \kerning1\expnd0\expndtw0
+ of \cf9 \kerning1\expnd0\expndtw0
+Time\cf4 \kerning1\expnd0\expndtw0
+ column names :  [\cf6 \kerning1\expnd0\expndtw0
+'trial'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'lh'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'ps'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'id'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'rw'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'wt'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'alh'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'aps'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'ai
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf6 \kerning1\expnd0\expndtw0
+d'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'arw'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'awt'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'rep'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'time'\cf4 \kerning1\expnd0\expndtw0 ]
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+display((Markdown(\cf6 \kerning1\expnd0\expndtw0
+"### Statistics for Cost"\cf4 \kerning1\expnd0\expndtw0
+)))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+df_cost.cost.describe()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f0\b\fs41\fsmilli20800 \cf3 Statistics for Cost
+\f1\b0\fs24 \cf0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+count
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+    80.000000  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+mean
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+      0.530875  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+std
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+       0.019500  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+min
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+       0.480000  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+25%       0.510000  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+50%       0.540000  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+75%       0.540000  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+max
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+       0.560000  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Name
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+: 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+cost
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+, 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+dtype
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+: 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+float64
+\f1\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.figure(figsize=(PlotWidth, PlotWidth))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+sns.boxplot(data=df_cost[\cf6 \kerning1\expnd0\expndtw0
+'cost'\cf4 \kerning1\expnd0\expndtw0
+])
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.title(\cf6 \kerning1\expnd0\expndtw0
+'Box Plot of Cost'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.ylabel(\cf6 \kerning1\expnd0\expndtw0
+'Cost'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.show()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.figure(figsize=(PlotWidth, PlotWidth))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+df_cost[\cf6 \kerning1\expnd0\expndtw0
+'cost'\cf4 \kerning1\expnd0\expndtw0
+].hist()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.title(\cf6 \kerning1\expnd0\expndtw0
+'cost'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.xlabel(\cf6 \kerning1\expnd0\expndtw0
+'cost)'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.show()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.figure(figsize=(PlotWidth*\cf5 \kerning1\expnd0\expndtw0 2\cf4 \kerning1\expnd0\expndtw0
+, PlotWidth))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.scatter(df_cost[\cf6 \kerning1\expnd0\expndtw0
+'trial'\cf4 \kerning1\expnd0\expndtw0
+], df_cost[\cf6 \kerning1\expnd0\expndtw0
+'cost'\cf4 \kerning1\expnd0\expndtw0
+])
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.title(\cf6 \kerning1\expnd0\expndtw0
+'cost vs. trial'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.xlabel(\cf6 \kerning1\expnd0\expndtw0
+'trial'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.ylabel(\cf6 \kerning1\expnd0\expndtw0
+'cost'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.show()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+display((Markdown(\cf6 \kerning1\expnd0\expndtw0
+"### Statistics for Time"\cf4 \kerning1\expnd0\expndtw0
+)))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+df_time.time.describe()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f0\b\fs41\fsmilli20800 \cf3 Statistics for Time
+\f1\b0\fs24 \cf0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+count
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+       80.00000  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+mean
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+     12681.40000  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+std
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+       3360.13591  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+min
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+       8480.00000  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+25%       9464.25000  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+50%      12989.00000  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+75%      15460.75000  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+max
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+      18098.00000  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Name
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+: 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+time
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+, 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+dtype
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+: 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+float64
+\f1\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f5\fs24\fsmilli12000 \cf3 plt.\uc0\u64257 gure(\u64257 gsize=(PlotWidth, PlotWidth))
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 sns.boxplot(data=df_time[\'91time\'92])
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 plt.title(\'91Box Plot of Time\'92)
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 plt.ylabel(\'91Time\'92)
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 plt.show()
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 plt.\uc0\u64257 gure(\u64257 gsize=(PlotWidth, PlotWidth))
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 df_time[\'91time\'92].hist()
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 plt.title(\'91time\'92)
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 plt.xlabel(\'91time)\'92)
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 plt.show()
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 plt.\uc0\u64257 gure(\u64257 gsize=(PlotWidth*2, PlotWidth))
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 plt.scatter(df_time[\'91trial\'92], df_time[\'91time\'92])
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 plt.title(\'91time vs. trial\'92)
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 plt.xlabel(\'91trial\'92)
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 plt.ylabel(\'91time\'92)
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 plt.show()
+\f1\fs24 \cf0 \
+
+\f0\b\fs65\fsmilli32800 \cf2 Cost Analysis
+\f1\b0\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+f = \cf6 \kerning1\expnd0\expndtw0
+'cost ~ (alh+aps+aid+arw+awt)**2'
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+y, X = patsy.dmatrices(f, df_cost, return_type=\cf6 \kerning1\expnd0\expndtw0
+'dataframe'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(y[:\cf5 \kerning1\expnd0\expndtw0 5\cf4 \kerning1\expnd0\expndtw0
+])
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(X[:\cf5 \kerning1\expnd0\expndtw0 5\cf4 \kerning1\expnd0\expndtw0
+])
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+   
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+cost
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+0  0.51  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+1  0.51  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+2  0.54  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+3  0.51  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+4  0.54  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+   
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+Intercept
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+   
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+alh
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+   
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+aps
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+   
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+aid
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+arw
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+awt
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+alh
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:aps  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+alh
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:aid  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+alh
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:arw  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+alh
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:awt  \\  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+0        1.0  0.16  50.0  0.25  0.4  0.8      8.0    0.040    0.064    0.128  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+1        1.0  0.28  50.0  0.25  0.4  1.2     14.0    0.070    0.112    0.336  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+2        1.0  0.16  60.0  0.25  0.4  1.2      9.6    0.040    0.064    0.192  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+3        1.0  0.28  60.0  0.25  0.4  0.8     16.8    0.070    0.112    0.224  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+4        1.0  0.16  50.0  0.15  0.4  1.2      8.0    0.024    0.064    0.192   
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+   
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+aps
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:aid  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+aps
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:arw  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+aps
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:awt  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+aid
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:arw  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+aid
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:awt  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+arw
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:awt  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+0     12.5     20.0     40.0     0.10     0.20     0.32  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+1     12.5     20.0     60.0     0.10     0.30     0.48  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+2     15.0     24.0     72.0     0.10     0.30     0.48  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+3     15.0     24.0     48.0     0.10     0.20     0.32  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+4      7.5     20.0     60.0     0.06     0.18     0.48  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+## An intercept is not added by default, so we need to add that here
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+X = sm.add_constant(X)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+results = sm.OLS(y, X).fit()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+results.summary()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(results.summary())
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.figure(figsize=(PlotWidth, PlotWidth))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+sns.regplot(x=results.predict(X), y=y)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.xlabel(\cf6 \kerning1\expnd0\expndtw0
+'Predicted cost'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.ylabel(\cf6 \kerning1\expnd0\expndtw0
+'Actual cost'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.title(\cf6 \kerning1\expnd0\expndtw0
+'Actual vs. Predicted cost'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.show()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+                            OLS Regression Results  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Dep. Variable:                   cost   R-squared:                       0.971  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Model:                            OLS   Adj. R-squared:                  0.964  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Method:                 Least Squares   F-statistic:                     141.4  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Date:                Wed, 28 Jul 2021   Prob (F-statistic):           4.75e\cf6 \kerning1\expnd0\expndtw0
+-43\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Time:
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+                        19:27:10   Log-Likelihood:                 343.19  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+No. Observations:                  80   AIC:                            \cf6 \kerning1\expnd0\expndtw0
+-654\cf4 \kerning1\expnd0\expndtw0
+.4  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Df Residuals:                      64   BIC:                            \cf6 \kerning1\expnd0\expndtw0
+-616\cf4 \kerning1\expnd0\expndtw0
+.3  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Df Model:                          15  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Covariance Type:            nonrobust  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+                 coef    std err          t      P>|t|      [0.025      0.975]  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+------------------------------------------------------------------------------  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Intercept      0.3328      0.040      8.322      0.000       0.253       0.413  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh            0.0083      0.091      0.092      0.927      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.173       0.189  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aps           \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.0019      0.001     \cf6 \kerning1\expnd0\expndtw0
+-2\cf4 \kerning1\expnd0\expndtw0
+.880      0.005      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.003      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.001  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aid           \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.1825      0.108     \cf6 \kerning1\expnd0\expndtw0
+-1\cf4 \kerning1\expnd0\expndtw0
+.691      0.096      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.398       0.033  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+arw            0.3513      0.028     12.757      0.000       0.296       0.406  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+awt            0.2413      0.026      9.188      0.000       0.189       0.294  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh:aps        0.0029      0.001      2.111      0.039       0.000       0.006  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh:aid       \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.6250      0.138     \cf6 \kerning1\expnd0\expndtw0
+-4\cf4 \kerning1\expnd0\expndtw0
+.523      0.000      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.901      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.349  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh:arw        0.1563      0.035      4.523      0.000       0.087       0.225  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh:awt       \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.1563      0.035     \cf6 \kerning1\expnd0\expndtw0
+-4\cf4 \kerning1\expnd0\expndtw0
+.523      0.000      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.225      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.087  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aps:aid        0.0105      0.002      6.332      0.000       0.007       0.014  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aps:arw       \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.0026      0.000     \cf6 \kerning1\expnd0\expndtw0
+-6\cf4 \kerning1\expnd0\expndtw0
+.332      0.000      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.003      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.002  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aps:awt        0.0011      0.000      2.714      0.009       0.000       0.002  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aid:arw        0.4125      0.041      9.950      0.000       0.330       0.495  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aid:awt       \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.4625      0.041    \cf6 \kerning1\expnd0\expndtw0
+-11\cf4 \kerning1\expnd0\expndtw0
+.156      0.000      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.545      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.380  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+arw:awt       \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.2594      0.010    \cf6 \kerning1\expnd0\expndtw0
+-25\cf4 \kerning1\expnd0\expndtw0
+.025      0.000      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.280      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.239  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Omnibus:                      114.302   Durbin-Watson:                   2.141  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             3820.537  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Skew:                          \cf6 \kerning1\expnd0\expndtw0
+-4\cf4 \kerning1\expnd0\expndtw0
+.440   Prob(JB):                         0.00  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Kurtosis:                      35.669   Cond. No.                     3.13e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Notes:  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+[1] Standard Errors assume that the covariance matrix of the errors is correctly speci
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+fied.  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+[2] The condition number is large, 3.13e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+. This might indicate that there are  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+strong multicollinearity or other numerical problems.
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f0\b\fs52\fsmilli26400 \cf3 Reduced Cost Model
+\f1\b0\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+cost_included = backward_regression(X,y,\cf5 \kerning1\expnd0\expndtw0
+.05\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+cost_included.pop(\cf5 \kerning1\expnd0\expndtw0 0\cf4 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(cost_included)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf10 \kerning1\expnd0\expndtw0
+Drop
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ alh                            
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+with
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ p-value \cf5 \kerning1\expnd0\expndtw0
+0.927017\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf10 \kerning1\expnd0\expndtw0
+Drop
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ aid                            
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+with
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ p-value \cf5 \kerning1\expnd0\expndtw0
+0.0905131\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 [\cf11 \kerning1\expnd0\expndtw0
+'aps'\cf4 \kerning1\expnd0\expndtw0
+, \cf11 \kerning1\expnd0\expndtw0
+'arw'\cf4 \kerning1\expnd0\expndtw0
+, \cf11 \kerning1\expnd0\expndtw0
+'awt'\cf4 \kerning1\expnd0\expndtw0
+, \cf11 \kerning1\expnd0\expndtw0
+'alh\cf4 \kerning1\expnd0\expndtw0
+:aps', \cf11 \kerning1\expnd0\expndtw0
+'alh\cf4 \kerning1\expnd0\expndtw0
+:aid', \cf11 \kerning1\expnd0\expndtw0
+'alh\cf4 \kerning1\expnd0\expndtw0
+:arw', \cf11 \kerning1\expnd0\expndtw0
+'alh\cf4 \kerning1\expnd0\expndtw0
+:awt', \cf11 \kerning1\expnd0\expndtw0
+'aps\cf4 \kerning1\expnd0\expndtw0
+:aid', \cf11 \kerning1\expnd0\expndtw0
+'aps\cf4 \kerning1\expnd0\expndtw0
+:arw'
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+, \cf11 \kerning1\expnd0\expndtw0
+'aps\cf4 \kerning1\expnd0\expndtw0
+:awt', \cf11 \kerning1\expnd0\expndtw0
+'aid\cf4 \kerning1\expnd0\expndtw0
+:arw', \cf11 \kerning1\expnd0\expndtw0
+'aid\cf4 \kerning1\expnd0\expndtw0
+:awt', \cf11 \kerning1\expnd0\expndtw0
+'arw\cf4 \kerning1\expnd0\expndtw0
+:awt']
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+y = df_cost[\cf6 \kerning1\expnd0\expndtw0
+'cost'\cf4 \kerning1\expnd0\expndtw0 ]
+\f1\fs24 \cf0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+#y = df_cost['time']
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+X = X[cost_included]
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+## An intercept is not added by default, so we need to add that here
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+X = sm.add_constant(X)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+results = sm.OLS(y, X).fit()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+results.summary()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(results.summary())
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.figure(figsize=(PlotWidth, PlotWidth))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+sns.regplot(x=results.predict(X), y=y)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.xlabel(\cf6 \kerning1\expnd0\expndtw0
+'Predicted cost'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.ylabel(\cf6 \kerning1\expnd0\expndtw0
+'Actual cost'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.title(\cf6 \kerning1\expnd0\expndtw0
+'Actual vs. Predicted cost'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.show()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+                            OLS Regression Results  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Dep. Variable:                   cost   R-squared:                       0.969  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Model:                            OLS   Adj. R-squared:                  0.963  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Method:                 Least Squares   F-statistic:                     160.7  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Date:                Wed, 28 Jul 2021   Prob (F-statistic):           1.22e\cf6 \kerning1\expnd0\expndtw0
+-44\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Time:
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+                        19:27:12   Log-Likelihood:                 341.41  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+No. Observations:                  80   AIC:                            \cf6 \kerning1\expnd0\expndtw0
+-654\cf4 \kerning1\expnd0\expndtw0
+.8  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Df Residuals:                      66   BIC:                            \cf6 \kerning1\expnd0\expndtw0
+-621\cf4 \kerning1\expnd0\expndtw0
+.5  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Df Model:                          13  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Covariance Type:            nonrobust  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+                 coef    std err          t      P>|t|      [0.025      0.975]  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+------------------------------------------------------------------------------  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+const          0.3006      0.029     10.531      0.000       0.244       0.358  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aps           \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.0015      0.001     \cf6 \kerning1\expnd0\expndtw0
+-2\cf4 \kerning1\expnd0\expndtw0
+.669      0.010      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.003      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.000  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+arw            0.3541      0.028     12.824      0.000       0.299       0.409  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+awt            0.2460      0.026      9.423      0.000       0.194       0.298  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh:aps        0.0032      0.001      4.253      0.000       0.002       0.005  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh:aid       \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.6815      0.128     \cf6 \kerning1\expnd0\expndtw0
+-5\cf4 \kerning1\expnd0\expndtw0
+.340      0.000      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.936      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.427  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh:arw        0.1581      0.034      4.671      0.000       0.091       0.226  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh:awt       \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.1531      0.032     \cf6 \kerning1\expnd0\expndtw0
+-4\cf4 \kerning1\expnd0\expndtw0
+.764      0.000      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.217      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.089  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aps:aid        0.0081      0.001      9.160      0.000       0.006       0.010  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aps:arw       \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.0026      0.000     \cf6 \kerning1\expnd0\expndtw0
+-6\cf4 \kerning1\expnd0\expndtw0
+.288      0.000      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.003      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.002  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aps:awt        0.0011      0.000      2.695      0.009       0.000       0.002  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aid:arw        0.3961      0.041      9.754      0.000       0.315       0.477  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aid:awt       \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.4898      0.039    \cf6 \kerning1\expnd0\expndtw0
+-12\cf4 \kerning1\expnd0\expndtw0
+.715      0.000      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.567      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.413  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+arw:awt       \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.2594      0.010    \cf6 \kerning1\expnd0\expndtw0
+-24\cf4 \kerning1\expnd0\expndtw0
+.854      0.000      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.280      \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.239  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Omnibus:                      125.804   Durbin-Watson:                   2.098  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             4980.386  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Skew:                          \cf6 \kerning1\expnd0\expndtw0
+-5\cf4 \kerning1\expnd0\expndtw0
+.178   Prob(JB):                         0.00  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Kurtosis:                      40.241   Cond. No.                     2.66e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Notes:  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+[1] Standard Errors assume that the covariance matrix of the errors is correctly speci
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+fied.  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+[2] The condition number is large, 2.66e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+. This might indicate that there are  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+strong multicollinearity or other numerical problems.
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+cost_eq = build_model(cost_included,results.params,
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+False
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(\cf6 \kerning1\expnd0\expndtw0
+"Cost = "\cf4 \kerning1\expnd0\expndtw0
+ + cost_eq)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Cost = \cf5 \kerning1\expnd0\expndtw0
+0.30061301677651686\cf4 \kerning1\expnd0\expndtw0
+ + \cf5 \kerning1\expnd0\expndtw0
+-0.0014979526099359666\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X2 + \cf5 \kerning1\expnd0\expndtw0
+0.3541048685686145\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X4 + \cf5 \kerning1\expnd0\expndtw0
+0.24600811428103486\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5 + \cf5 \kerning1\expnd0\expndtw0
+0.003193676289093103\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X2 +
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4  \cf5 \kerning1\expnd0\expndtw0
+-0.681545835829839\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X3 + \cf5 \kerning1\expnd0\expndtw0
+0.15813870197108404\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X4 + \cf5 \kerning1\expnd0\expndtw0
+-0
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+.15310216338152616\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5 + \cf5 \kerning1\expnd0\expndtw0
+0.008101719131677326\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X2*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X3 + \cf5 \kerning1\expnd0\expndtw0
+-0
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+.0026250000000000544\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X2*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X4 + \cf5 \kerning1\expnd0\expndtw0
+0.0011250000000000322\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X2*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5 +
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4  \cf5 \kerning1\expnd0\expndtw0
+0.3961480849887108\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X3*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X4 + \cf5 \kerning1\expnd0\expndtw0
+-0.4897531916854896\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X3*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5 + \cf5 \kerning1\expnd0\expndtw0
+-0
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+.2593750000000006\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X4*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f0\b\fs65\fsmilli32800 \cf2 Time Analysis
+\f1\b0\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+f = \cf6 \kerning1\expnd0\expndtw0
+'time ~ (alh+aps+aid+arw+awt)**2'
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+y, X = patsy.dmatrices(f, df_time, return_type=\cf6 \kerning1\expnd0\expndtw0
+'dataframe'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(y[:\cf5 \kerning1\expnd0\expndtw0 5\cf4 \kerning1\expnd0\expndtw0
+])
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(X[:\cf5 \kerning1\expnd0\expndtw0 5\cf4 \kerning1\expnd0\expndtw0
+])
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+      
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+time
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+0  18098.0  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+1   8741.0  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+2  14493.0  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+3  10191.0  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+4  14914.0  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+   
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+Intercept
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+   
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+alh
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+   
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+aps
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+   
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+aid
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+arw
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+awt
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+alh
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:aps  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+alh
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:aid  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+alh
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:arw  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+alh
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:awt  \\  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+0        1.0  0.16  50.0  0.25  0.4  0.8      8.0    0.040    0.064    0.128  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+1        1.0  0.28  50.0  0.25  0.4  1.2     14.0    0.070    0.112    0.336  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+2        1.0  0.16  60.0  0.25  0.4  1.2      9.6    0.040    0.064    0.192  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+3        1.0  0.28  60.0  0.25  0.4  0.8     16.8    0.070    0.112    0.224  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+4        1.0  0.16  50.0  0.15  0.4  1.2      8.0    0.024    0.064    0.192   
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+   
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+aps
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:aid  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+aps
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:arw  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+aps
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:awt  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+aid
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:arw  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+aid
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:awt  
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+arw
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+:awt  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+0     12.5     20.0     40.0     0.10     0.20     0.32  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+1     12.5     20.0     60.0     0.10     0.30     0.48  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+2     15.0     24.0     72.0     0.10     0.30     0.48  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+3     15.0     24.0     48.0     0.10     0.20     0.32  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+4      7.5     20.0     60.0     0.06     0.18     0.48  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+## An intercept is not added by default, so we need to add that here
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+X = sm.add_constant(X)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+results = sm.OLS(y, X).fit()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+results.summary()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(results.summary())
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.figure(figsize=(PlotWidth, PlotWidth))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+sns.regplot(x=results.predict(X), y=y)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.xlabel(\cf6 \kerning1\expnd0\expndtw0
+'Predicted Time'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.ylabel(\cf6 \kerning1\expnd0\expndtw0
+'Actual Time'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.title(\cf6 \kerning1\expnd0\expndtw0
+'Actual vs. Predicted Time'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.show()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+                            OLS Regression Results  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Dep. Variable:                   time   R-squared:                       0.985  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Model:                            OLS   Adj. R-squared:                  0.982  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Method:                 Least Squares   F-statistic:                     287.3  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Date:                Wed, 28 Jul 2021   Prob (F-statistic):           1.17e\cf6 \kerning1\expnd0\expndtw0
+-52\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Time:
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+                        19:27:13   Log-Likelihood:                \cf6 \kerning1\expnd0\expndtw0
+-593\cf4 \kerning1\expnd0\expndtw0
+.61  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+No. Observations:                  80   AIC:                             1219.  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Df Residuals:                      64   BIC:                             1257.  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Df Model:                          15  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Covariance Type:            nonrobust  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+                 coef    std err          t      P>|t|      [0.025      0.975]  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+------------------------------------------------------------------------------  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Intercept   3.886e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   4869.801      7.980      0.000    2.91e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+    4.86e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh        \cf6 \kerning1\expnd0\expndtw0
+-9\cf4 \kerning1\expnd0\expndtw0
+.373e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+    1.1e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+     \cf6 \kerning1\expnd0\expndtw0
+-8\cf4 \kerning1\expnd0\expndtw0
+.494      0.000   \cf6 \kerning1\expnd0\expndtw0
+-1\cf4 \kerning1\expnd0\expndtw0
+.16e\cf6 \kerning1\expnd0\expndtw0
++05\cf4 \kerning1\expnd0\expndtw0
+   \cf6 \kerning1\expnd0\expndtw0
+-7\cf4 \kerning1\expnd0\expndtw0
+.17e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aps         \cf6 \kerning1\expnd0\expndtw0
+-101\cf4 \kerning1\expnd0\expndtw0
+.9583     81.061     \cf6 \kerning1\expnd0\expndtw0
+-1\cf4 \kerning1\expnd0\expndtw0
+.258      0.213    \cf6 \kerning1\expnd0\expndtw0
+-263\cf4 \kerning1\expnd0\expndtw0
+.896      59.980  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aid         6178.6667   1.31e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+      0.470      0.640   \cf6 \kerning1\expnd0\expndtw0
+-2\cf4 \kerning1\expnd0\expndtw0
+.01e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+    3.24e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+arw         2096.5000   3353.230      0.625      0.534   \cf6 \kerning1\expnd0\expndtw0
+-4602\cf4 \kerning1\expnd0\expndtw0
+.347    8795.347  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+awt        \cf6 \kerning1\expnd0\expndtw0
+-8507\cf4 \kerning1\expnd0\expndtw0
+.9167   3197.582     \cf6 \kerning1\expnd0\expndtw0
+-2\cf4 \kerning1\expnd0\expndtw0
+.661      0.010   \cf6 \kerning1\expnd0\expndtw0
+-1\cf4 \kerning1\expnd0\expndtw0
+.49e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   \cf6 \kerning1\expnd0\expndtw0
+-2120\cf4 \kerning1\expnd0\expndtw0
+.012  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh:aps      302.8333    168.294      1.799      0.077     \cf6 \kerning1\expnd0\expndtw0
+-33\cf4 \kerning1\expnd0\expndtw0
+.372     639.039  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh:aid    \cf6 \kerning1\expnd0\expndtw0
+-4\cf4 \kerning1\expnd0\expndtw0
+.994e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   1.68e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+     \cf6 \kerning1\expnd0\expndtw0
+-2\cf4 \kerning1\expnd0\expndtw0
+.968      0.004   \cf6 \kerning1\expnd0\expndtw0
+-8\cf4 \kerning1\expnd0\expndtw0
+.36e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   \cf6 \kerning1\expnd0\expndtw0
+-1\cf4 \kerning1\expnd0\expndtw0
+.63e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh:arw     1.009e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   4207.345      2.399      0.019    1688.613    1.85e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh:awt     2.909e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   4207.345      6.913      0.000    2.07e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+    3.75e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aps:aid      301.9000    201.953      1.495      0.140    \cf6 \kerning1\expnd0\expndtw0
+-101\cf4 \kerning1\expnd0\expndtw0
+.547     705.347  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aps:arw     \cf6 \kerning1\expnd0\expndtw0
+-137\cf4 \kerning1\expnd0\expndtw0
+.1250     50.488     \cf6 \kerning1\expnd0\expndtw0
+-2\cf4 \kerning1\expnd0\expndtw0
+.716      0.008    \cf6 \kerning1\expnd0\expndtw0
+-237\cf4 \kerning1\expnd0\expndtw0
+.987     \cf6 \kerning1\expnd0\expndtw0
+-36\cf4 \kerning1\expnd0\expndtw0
+.263  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aps:awt      \cf6 \kerning1\expnd0\expndtw0
+-18\cf4 \kerning1\expnd0\expndtw0
+.6750     50.488     \cf6 \kerning1\expnd0\expndtw0
+-0\cf4 \kerning1\expnd0\expndtw0
+.370      0.713    \cf6 \kerning1\expnd0\expndtw0
+-119\cf4 \kerning1\expnd0\expndtw0
+.537      82.187  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aid:arw     5830.0000   5048.814      1.155      0.252   \cf6 \kerning1\expnd0\expndtw0
+-4256\cf4 \kerning1\expnd0\expndtw0
+.165    1.59e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aid:awt    \cf6 \kerning1\expnd0\expndtw0
+-1\cf4 \kerning1\expnd0\expndtw0
+.288e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   5048.814     \cf6 \kerning1\expnd0\expndtw0
+-2\cf4 \kerning1\expnd0\expndtw0
+.552      0.013    \cf6 \kerning1\expnd0\expndtw0
+-2\cf4 \kerning1\expnd0\expndtw0
+.3e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   \cf6 \kerning1\expnd0\expndtw0
+-2798\cf4 \kerning1\expnd0\expndtw0
+.835  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+arw:awt     1626.2500   1262.203      1.288      0.202    \cf6 \kerning1\expnd0\expndtw0
+-895\cf4 \kerning1\expnd0\expndtw0
+.291    4147.791  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Omnibus:                      117.964   Durbin-Watson:                   1.973  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             3766.256  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Skew:                           4.734   Prob(JB):                         0.00  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Kurtosis:                      35.252   Cond. No.                     3.13e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Notes:  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+[1] Standard Errors assume that the covariance matrix of the errors is correctly speci
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+fied.  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+[2] The condition number is large, 3.13e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+. This might indicate that there are  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+strong multicollinearity or other numerical problems.
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f0\b\fs52\fsmilli26400 \cf3 Time Reduced Model
+\f1\b0\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+time_included = backward_regression(X,y,\cf5 \kerning1\expnd0\expndtw0
+.05\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+time_included.pop(\cf5 \kerning1\expnd0\expndtw0 0\cf4 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(time_included)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Drop
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ aps:awt                        
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+with
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ p-
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+value
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0  \cf5 \kerning1\expnd0\expndtw0
+0.712687\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Drop
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ aid                            
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+with
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ p-
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+value
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0  \cf5 \kerning1\expnd0\expndtw0
+0.63764\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Drop
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ arw                            
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+with
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ p-
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+value
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0  \cf5 \kerning1\expnd0\expndtw0
+0.549529\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Drop
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ aid:arw                        
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+with
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ p-
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+value
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0  \cf5 \kerning1\expnd0\expndtw0
+0.12172\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Drop
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ alh:aps                        
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+with
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ p-
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+value
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0  \cf5 \kerning1\expnd0\expndtw0
+0.0744513\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Drop
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ arw:awt                        
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+with
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ p-
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+value
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0  \cf5 \kerning1\expnd0\expndtw0
+0.0725949\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 [\cf6 \kerning1\expnd0\expndtw0
+'alh'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'aps'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'awt'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'alh:aid'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'alh:arw'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'alh:awt'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'aps:aid'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'aps:arw'\cf4 \kerning1\expnd0\expndtw0
+, \cf6 \kerning1\expnd0\expndtw0
+'aid:awt'
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 ]
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+y = df_time[\cf6 \kerning1\expnd0\expndtw0
+'time'\cf4 \kerning1\expnd0\expndtw0 ]
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+X = X[time_included]
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+## An intercept is not added by default, so we need to add that here
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+X = sm.add_constant(X)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+results = sm.OLS(y, X).fit()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+results.summary()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(results.summary())
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.figure(figsize=(PlotWidth, PlotWidth))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+sns.regplot(x=results.predict(X), y=y)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.xlabel(\cf6 \kerning1\expnd0\expndtw0
+'Predicted Time'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.ylabel(\cf6 \kerning1\expnd0\expndtw0
+'Actual Time'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.title(\cf6 \kerning1\expnd0\expndtw0
+'Actual vs. Predicted Time'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+plt.show()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+                            OLS Regression Results  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Dep. Variable:                   time   R-squared:                       0.983  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Model:                            OLS   Adj. R-squared:                  0.981  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Method:                 Least Squares   F-statistic:                     453.8  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Date:                Wed, 28 Jul 2021   Prob (F-statistic):           2.19e\cf6 \kerning1\expnd0\expndtw0
+-58\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Time:
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+                        19:27:14   Log-Likelihood:                \cf6 \kerning1\expnd0\expndtw0
+-599\cf4 \kerning1\expnd0\expndtw0
+.26  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+No. Observations:                  80   AIC:                             1219.  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Df Residuals:                      70   BIC:                             1242.  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Df Model:                           9  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Covariance Type:            nonrobust  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+                 coef    std err          t      P>|t|      [0.025      0.975]  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+------------------------------------------------------------------------------  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+const       3.942e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   1154.479     34.142      0.000    3.71e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+    4.17e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh        \cf6 \kerning1\expnd0\expndtw0
+-7\cf4 \kerning1\expnd0\expndtw0
+.914e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   6029.887    \cf6 \kerning1\expnd0\expndtw0
+-13\cf4 \kerning1\expnd0\expndtw0
+.124      0.000   \cf6 \kerning1\expnd0\expndtw0
+-9\cf4 \kerning1\expnd0\expndtw0
+.12e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   \cf6 \kerning1\expnd0\expndtw0
+-6\cf4 \kerning1\expnd0\expndtw0
+.71e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aps         \cf6 \kerning1\expnd0\expndtw0
+-128\cf4 \kerning1\expnd0\expndtw0
+.1914     25.154     \cf6 \kerning1\expnd0\expndtw0
+-5\cf4 \kerning1\expnd0\expndtw0
+.096      0.000    \cf6 \kerning1\expnd0\expndtw0
+-178\cf4 \kerning1\expnd0\expndtw0
+.360     \cf6 \kerning1\expnd0\expndtw0
+-78\cf4 \kerning1\expnd0\expndtw0
+.023  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+awt        \cf6 \kerning1\expnd0\expndtw0
+-8860\cf4 \kerning1\expnd0\expndtw0
+.8498   1369.537     \cf6 \kerning1\expnd0\expndtw0
+-6\cf4 \kerning1\expnd0\expndtw0
+.470      0.000   \cf6 \kerning1\expnd0\expndtw0
+-1\cf4 \kerning1\expnd0\expndtw0
+.16e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   \cf6 \kerning1\expnd0\expndtw0
+-6129\cf4 \kerning1\expnd0\expndtw0
+.395  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh:aid    \cf6 \kerning1\expnd0\expndtw0
+-4\cf4 \kerning1\expnd0\expndtw0
+.626e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   1.65e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+     \cf6 \kerning1\expnd0\expndtw0
+-2\cf4 \kerning1\expnd0\expndtw0
+.798      0.007   \cf6 \kerning1\expnd0\expndtw0
+-7\cf4 \kerning1\expnd0\expndtw0
+.92e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   \cf6 \kerning1\expnd0\expndtw0
+-1\cf4 \kerning1\expnd0\expndtw0
+.33e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh:arw      1.23e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   4097.512      3.002      0.004    4127.272    2.05e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+alh:awt     2.909e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   4317.386      6.737      0.000    2.05e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+    3.77e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aps:aid      434.5856    102.753      4.229      0.000     229.652     639.519  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aps:arw      \cf6 \kerning1\expnd0\expndtw0
+-57\cf4 \kerning1\expnd0\expndtw0
+.7179     16.919     \cf6 \kerning1\expnd0\expndtw0
+-3\cf4 \kerning1\expnd0\expndtw0
+.411      0.001     \cf6 \kerning1\expnd0\expndtw0
+-91\cf4 \kerning1\expnd0\expndtw0
+.462     \cf6 \kerning1\expnd0\expndtw0
+-23\cf4 \kerning1\expnd0\expndtw0
+.974  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+aid:awt    \cf6 \kerning1\expnd0\expndtw0
+-1\cf4 \kerning1\expnd0\expndtw0
+.138e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   4760.148     \cf6 \kerning1\expnd0\expndtw0
+-2\cf4 \kerning1\expnd0\expndtw0
+.390      0.020   \cf6 \kerning1\expnd0\expndtw0
+-2\cf4 \kerning1\expnd0\expndtw0
+.09e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+   \cf6 \kerning1\expnd0\expndtw0
+-1883\cf4 \kerning1\expnd0\expndtw0
+.394  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Omnibus:                      103.336   Durbin-Watson:                   1.908  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             2137.913  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Skew:                           3.999   Prob(JB):                         0.00  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Kurtosis:                      27.030   Cond. No.                     2.14e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+==============================================================================
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Notes:  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+[1] Standard Errors assume that the covariance matrix of the errors is correctly speci
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+fied.  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+[2] The condition number is large, 2.14e\cf6 \kerning1\expnd0\expndtw0
++04\cf4 \kerning1\expnd0\expndtw0
+. This might indicate that there are  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+strong multicollinearity or other numerical problems.
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+time_eq = build_model(time_included,results.params,
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+False
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(\cf6 \kerning1\expnd0\expndtw0
+"Time = "\cf4 \kerning1\expnd0\expndtw0
+ + time_eq)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+Time = \cf5 \kerning1\expnd0\expndtw0
+39415.87499999855\cf4 \kerning1\expnd0\expndtw0
+ + \cf5 \kerning1\expnd0\expndtw0
+-79138.51046393832\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1 + \cf5 \kerning1\expnd0\expndtw0
+-128.19137670175314\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f1\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+.X2 + \cf5 \kerning1\expnd0\expndtw0
+-8860.849838411767\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5 + \cf5 \kerning1\expnd0\expndtw0
+-46255.95567867106\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X3 + \cf5 \kerning1\expnd0\expndtw0
+12299.5
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+02666120085\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X4 + \cf5 \kerning1\expnd0\expndtw0
+29085.416666666522\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5 + \cf5 \kerning1\expnd0\expndtw0
+434.5855955
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+6786804\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X2*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X3 + \cf5 \kerning1\expnd0\expndtw0
+-57.717904019688284\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X2*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X4 + \cf5 \kerning1\expnd0\expndtw0
+-11377.2091412
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+7423\cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X3*
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f0\b\fs52\fsmilli26400 \cf3 Equations
+\f1\b0\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+display(Markdown(\cf6 \kerning1\expnd0\expndtw0
+"Cost = "\cf4 \kerning1\expnd0\expndtw0
+))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(cost_eq)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(\cf6 \kerning1\expnd0\expndtw0
+"------"\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+display(Markdown(\cf6 \kerning1\expnd0\expndtw0
+"Time = "\cf4 \kerning1\expnd0\expndtw0
+))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(time_eq)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f5\fs24\fsmilli12000 \cf3 Cost =
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 0\cf4 \kerning1\expnd0\expndtw0
+.30061301677651686 + 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+-0
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.0014979526099359666 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X2 + 0.3541048685686145 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 4\cf4 \kerning1\expnd0\expndtw0
+ + 0.24600811428103486 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5 + 0.003193676289093103 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X2 + 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+-0
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.681
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+545835829839 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X3 + 0.15813870197108404 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X4 + 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+-0
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.153102
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+16338152616 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5 + 0.008101719131677326 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X2\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X3 + 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+-0
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.002625
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+0000000000544 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X2\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X4 + 0.0011250000000000322 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X2\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5 + 0.3961
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+480849887108 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X3\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X4 + 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+-0
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.4897531916854896 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X3\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5 + 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+-0
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.259375
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+0000000006 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X4\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+------
+\f1\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f5\fs24\fsmilli12000 \cf3 Time =
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+39415.87499999855 + 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+-79138
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.51046393832 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1 + 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+-128
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.19137670175314 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X2 + 
+\f2\b \cf4 \kerning1\expnd0\expndtw0 -
+\f1\b0\fs24 \cf0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+8860
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.849838411767 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5 + 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+-46255
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.95567867106 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X3 + 12299.50266612
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+0085 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X4 + 29085.416666666522 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X1\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5 + 434.58559556786804
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+ * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X2\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X3 + 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+-57
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.717904019688284 * 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X2\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X4 + 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+-11377
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.20914127423 * 
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X3\cf4 \kerning1\expnd0\expndtw0 *
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+model
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+.X5
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f0\b\fs65\fsmilli32800 \cf2 Optimization
+\f1\b0\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model = ConcreteModel()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.X1 = Var(within=NonNegativeReals)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.X2 = Var(within=NonNegativeReals)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.X3 = Var(within=NonNegativeReals)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.X4 = Var(within=NonNegativeReals)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.X5 = Var(within=NonNegativeReals)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.C1 = Constraint(expr = model.X1 <= \cf5 \kerning1\expnd0\expndtw0
+.28\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.C2 = Constraint(expr = model.X2 <= \cf5 \kerning1\expnd0\expndtw0
+60\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.C3 = Constraint(expr = model.X3 <= \cf5 \kerning1\expnd0\expndtw0
+.25\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.C4 = Constraint(expr = model.X4 <= \cf5 \kerning1\expnd0\expndtw0
+.8\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.C5 = Constraint(expr = model.X5 <= \cf5 \kerning1\expnd0\expndtw0
+1.2\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.C6 = Constraint(expr = model.X1 >= \cf5 \kerning1\expnd0\expndtw0
+.16\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.C7 = Constraint(expr = model.X2 >= \cf5 \kerning1\expnd0\expndtw0
+50\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.C8 = Constraint(expr = model.X3 >= \cf5 \kerning1\expnd0\expndtw0
+.15\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.C9 = Constraint(expr = model.X4 >= \cf5 \kerning1\expnd0\expndtw0
+.4\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.C10 = Constraint(expr = model.X5 >= \cf5 \kerning1\expnd0\expndtw0
+.8\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.f1 = Var()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.f2 = Var()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.C_f1 = Constraint(expr = model.f1 == (\cf5 \kerning1\expnd0\expndtw0
+0.30061301677651686\cf4 \kerning1\expnd0\expndtw0
+ + \cf5 \kerning1\expnd0\expndtw0
+-0.00149795260993596
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+66\cf4 \kerning1\expnd0\expndtw0
+ * model.X2 + \cf5 \kerning1\expnd0\expndtw0
+0.3541048685686145\cf4 \kerning1\expnd0\expndtw0
+ * model.X4 + \cf5 \kerning1\expnd0\expndtw0
+0.24600811428103486\cf4 \kerning1\expnd0\expndtw0
+ * model.X5 + \cf5 \kerning1\expnd0\expndtw0
+0.003
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+193676289093103\cf4 \kerning1\expnd0\expndtw0
+ * model.X1*model.X2 + \cf5 \kerning1\expnd0\expndtw0
+-0.681545835829839\cf4 \kerning1\expnd0\expndtw0
+ * model.X1*model.X3 + \cf5 \kerning1\expnd0\expndtw0
+0.15813
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+870197108404\cf4 \kerning1\expnd0\expndtw0
+ * model.X1*model.X4 + \cf5 \kerning1\expnd0\expndtw0
+-0.15310216338152616\cf4 \kerning1\expnd0\expndtw0
+ * model.X1*model.X5 + \cf5 \kerning1\expnd0\expndtw0
+0.008101
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+719131677326\cf4 \kerning1\expnd0\expndtw0
+ * model.X2*model.X3 + \cf5 \kerning1\expnd0\expndtw0
+-0.0026250000000000544\cf4 \kerning1\expnd0\expndtw0
+ * model.X2*model.X4 + \cf5 \kerning1\expnd0\expndtw0
+0.0011
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+250000000000322\cf4 \kerning1\expnd0\expndtw0
+ * model.X2*model.X5 + \cf5 \kerning1\expnd0\expndtw0
+0.3961480849887108\cf4 \kerning1\expnd0\expndtw0
+ * model.X3*model.X4 + \cf5 \kerning1\expnd0\expndtw0
+-0.4897
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+531916854896\cf4 \kerning1\expnd0\expndtw0
+ * model.X3*model.X5 + \cf5 \kerning1\expnd0\expndtw0
+-0.2593750000000006\cf4 \kerning1\expnd0\expndtw0
+ * model.X4*model.X5))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.C_f2 = Constraint(expr = model.f2 == (\cf5 \kerning1\expnd0\expndtw0
+39415.87499999855\cf4 \kerning1\expnd0\expndtw0
+ + \cf5 \kerning1\expnd0\expndtw0
+-79138.51046393832\cf4 \kerning1\expnd0\expndtw0
+ * m
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+odel.X1 + \cf5 \kerning1\expnd0\expndtw0
+-128.19137670175314\cf4 \kerning1\expnd0\expndtw0
+ * model.X2 + \cf5 \kerning1\expnd0\expndtw0
+-8860.849838411767\cf4 \kerning1\expnd0\expndtw0
+ * model.X5 + \cf5 \kerning1\expnd0\expndtw0
+-46255.9556
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+7867106\cf4 \kerning1\expnd0\expndtw0
+ * model.X1*model.X3 + \cf5 \kerning1\expnd0\expndtw0
+12299.502666120085\cf4 \kerning1\expnd0\expndtw0
+ * model.X1*model.X4 + \cf5 \kerning1\expnd0\expndtw0
+29085.416666666
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+522\cf4 \kerning1\expnd0\expndtw0
+ * model.X1*model.X5 + \cf5 \kerning1\expnd0\expndtw0
+434.58559556786804\cf4 \kerning1\expnd0\expndtw0
+ * model.X2*model.X3 + \cf5 \kerning1\expnd0\expndtw0
+-57.717904019688284
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+ * model.X2*model.X4 + \cf5 \kerning1\expnd0\expndtw0
+-11377.20914127423\cf4 \kerning1\expnd0\expndtw0
+ * model.X3*model.X5))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.O_f1 = Objective(expr = model.f1, sense=minimize)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.O_f2 = Objective(expr = model.f2, sense=minimize)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+# max f1 separately
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+# install glpk solver:  sudo apt-get install glpk-utils
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.O_f2.deactivate()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+solver = SolverFactory(\cf6 \kerning1\expnd0\expndtw0
+'ipopt'\cf4 \kerning1\expnd0\expndtw0
+)  
+\f4\i \cf7 \kerning1\expnd0\expndtw0
+#'cplex', 'ipopt'
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+solver.solve(model)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(\cf6 \kerning1\expnd0\expndtw0
+'( X1 , X2, X3, X4, X5 ) = ( '\cf4 \kerning1\expnd0\expndtw0
+ + str(value(model.X1)) + \cf6 \kerning1\expnd0\expndtw0
+' , '\cf4 \kerning1\expnd0\expndtw0
+ + str(value(model.
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+X2)) + \cf6 \kerning1\expnd0\expndtw0
+' , '\cf4 \kerning1\expnd0\expndtw0
+ + str(value(model.X3)) + \cf6 \kerning1\expnd0\expndtw0
+' , '\cf4 \kerning1\expnd0\expndtw0
+ + str(value(model.X4)) + \cf6 \kerning1\expnd0\expndtw0
+' , '\cf4 \kerning1\expnd0\expndtw0
+ + str(value
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+(model.X5)) + \cf6 \kerning1\expnd0\expndtw0
+' )'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(\cf6 \kerning1\expnd0\expndtw0
+'f1 = '\cf4 \kerning1\expnd0\expndtw0
+ + str(value(model.f1)))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(\cf6 \kerning1\expnd0\expndtw0
+'f2 = '\cf4 \kerning1\expnd0\expndtw0
+ + str(value(model.f2)))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+f2_min = value(model.f2)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+# max f2 separately
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.O_f2.activate()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.O_f1.deactivate()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+solver = SolverFactory(\cf6 \kerning1\expnd0\expndtw0
+'ipopt'\cf4 \kerning1\expnd0\expndtw0
+)  
+\f4\i \cf7 \kerning1\expnd0\expndtw0
+#'cplex', 'ipopt'
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+solver.solve(model)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(\cf6 \kerning1\expnd0\expndtw0
+'( X1 , X2, X3, X4, X5 ) = ( '\cf4 \kerning1\expnd0\expndtw0
+ + str(value(model.X1)) + \cf6 \kerning1\expnd0\expndtw0
+' , '\cf4 \kerning1\expnd0\expndtw0
+ + str(value(model.
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+X2)) + \cf6 \kerning1\expnd0\expndtw0
+' , '\cf4 \kerning1\expnd0\expndtw0
+ + str(value(model.X3)) + \cf6 \kerning1\expnd0\expndtw0
+' , '\cf4 \kerning1\expnd0\expndtw0
+ + str(value(model.X4)) + \cf6 \kerning1\expnd0\expndtw0
+' , '\cf4 \kerning1\expnd0\expndtw0
+ + str(value
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+(model.X5)) + \cf6 \kerning1\expnd0\expndtw0
+' )'\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(\cf6 \kerning1\expnd0\expndtw0
+'f1 = '\cf4 \kerning1\expnd0\expndtw0
+ + str(value(model.f1)))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+print(\cf6 \kerning1\expnd0\expndtw0
+'f2 = '\cf4 \kerning1\expnd0\expndtw0
+ + str(value(model.f2)))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+f2_max = value(model.f2)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+# apply augmented $\\epsilon$-Constraint
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+# max     f1 + delta*s
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+# constraint  f2 - s = e
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.O_f1.activate()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.O_f2.deactivate()
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.del_component(model.O_f1)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.del_component(model.O_f2)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.e = Param(initialize=\cf5 \kerning1\expnd0\expndtw0 0\cf4 \kerning1\expnd0\expndtw0
+, mutable=
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+True
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.delta = Param(initialize=\cf5 \kerning1\expnd0\expndtw0
+0.00001\cf4 \kerning1\expnd0\expndtw0 )
+\f1\fs24 \cf0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.slack = Var(within=NonNegativeReals)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.O_f1 = Objective(expr = model.f1 + model.delta * model.slack, sense=minimize)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+model.C_e = Constraint(expr = model.f2 - model.slack == model.e)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+n = \cf5 \kerning1\expnd0\expndtw0
+100
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+step = int((f2_max - f2_min) / n)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+steps = list(range(int(f2_min),int(f2_max),step)) + [f2_max]
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+x1_l, x2_l, x3_l, x4_l, x5_l = [], [], [], [], []
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+f1_l, f2_l = [], []
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f2\b\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+for
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ i 
+\f2\b \cf4 \kerning1\expnd0\expndtw0
+in
+\f3\b0 \cf4 \kerning1\expnd0\expndtw0
+ steps:
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+    model.e = i
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+    solver.solve(model)
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+    x1_l.append(value(model.X1))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+    x2_l.append(value(model.X2))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+    x3_l.append(value(model.X3))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+    x4_l.append(value(model.X4))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+    x5_l.append(value(model.X5))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+    f1_l.append(value(model.f1))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+    f2_l.append(value(model.f2))
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+    
+\f4\i \cf7 \kerning1\expnd0\expndtw0
+# print(i, value(model.X1), value(model.X2), value(model.f1), value(model.slack), 
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f4\i\fs20\fsmilli10400 \cf7 \kerning1\expnd0\expndtw0
+value(model.f2))
+\f1\i0\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+( X1 , X2, X3, X4, X5 ) = ( \cf5 \kerning1\expnd0\expndtw0
+0.27999999699979045\cf4 \kerning1\expnd0\expndtw0
+ , \cf5 \kerning1\expnd0\expndtw0
+50.00000021485858\cf4 \kerning1\expnd0\expndtw0
+ , \cf5 \kerning1\expnd0\expndtw0
+0.24999996237920
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+893\cf4 \kerning1\expnd0\expndtw0
+ , \cf5 \kerning1\expnd0\expndtw0
+0.39999999572941514\cf4 \kerning1\expnd0\expndtw0
+ , \cf5 \kerning1\expnd0\expndtw0
+0.8000000173812946\cf4 \kerning1\expnd0\expndtw0
+ )  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+f1 = \cf5 \kerning1\expnd0\expndtw0
+0.49701939510293697\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+f2 = \cf5 \kerning1\expnd0\expndtw0
+10416.124260969951\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+( X1 , X2, X3, X4, X5 ) = ( \cf5 \kerning1\expnd0\expndtw0
+0.28000000999993935\cf4 \kerning1\expnd0\expndtw0
+ , \cf5 \kerning1\expnd0\expndtw0
+60.000000599972694\cf4 \kerning1\expnd0\expndtw0
+ , \cf5 \kerning1\expnd0\expndtw0
+0.2500000099939
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf5 \kerning1\expnd0\expndtw0
+384\cf4 \kerning1\expnd0\expndtw0
+ , \cf5 \kerning1\expnd0\expndtw0
+0.8000000096771722\cf4 \kerning1\expnd0\expndtw0
+ , \cf5 \kerning1\expnd0\expndtw0
+1.2000000119993277\cf4 \kerning1\expnd0\expndtw0
+ )  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+f1 = \cf5 \kerning1\expnd0\expndtw0
+0.53898523398684\cf4 \kerning1\expnd0\expndtw0
+  
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f3\fs20\fsmilli10400 \cf4 \kerning1\expnd0\expndtw0
+f2 = \cf5 \kerning1\expnd0\expndtw0
+8557.622612553769
+\f1\fs24 \cf0 \kerning1\expnd0\expndtw0 \
+
+\f5\fs24\fsmilli12000 \cf3 ```python
+\f1\fs24 \cf0 \
+
+\f5\fs24\fsmilli12000 \cf3 ```
+\f1\fs24 \cf0 \
+}
