@@ -127,12 +127,12 @@ Install Docker
     --env AUTHENTICATE_VIA_JUPYTER="mytoken" \
     --shm-size 512m \
     --restart always \
-    mltooling/ml-workspace:0.12.1
+    mltooling/ml-workspace:0.13.2
    ```
 4. Install Python Packages
     ```sh
     pip install -U pip setuptools wheel
-    pip install -r requirements.txt
+    pip install prettypandas
     conda install -c conda-forge pyomo
     conda install -c conda-forge ipopt glpk
     conda install -c r r-irkernel
